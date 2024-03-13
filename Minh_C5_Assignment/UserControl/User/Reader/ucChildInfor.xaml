@@ -1,0 +1,181 @@
+﻿<UserControl x:Class="Minh_C5_Assignment.ucChildInfor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Minh_C5_Assignment"
+             mc:Ignorable="d" 
+             Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="350"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Label Content="Detail Information"
+               FontSize="20" FontWeight="Bold"
+               Background="DeepSkyBlue"
+               HorizontalContentAlignment="Center"/>          
+
+        <Grid Grid.Row="1"
+              Name="grdContain"
+              Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <GroupBox Grid.Row="0"
+                        BorderBrush="Black"
+                        BorderThickness="2 2 2 2"
+                        Margin="5 5 5 0"
+                          FontSize="18"
+                          FontWeight="SemiBold"
+                          Header="Reader Infor"
+                          Height="{Binding Path=Height, ElementName=grdContain}">
+                    <StackPanel Margin="5">
+                        <TextBlock Name="tblNameC" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblBOFC" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblTypeC" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblCreatedC" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblModifiedC" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblStatusC" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+
+            <!--<Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0"
+                            BorderBrush="Black"
+                            BorderThickness="2 2 2 0"
+                            Margin="5 5 5 0">
+                    <Label Content="Child Infor"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               HorizontalAlignment="Center"></Label>
+                </Border>
+
+                <Border Grid.Row="1"
+                            BorderBrush="Black"
+                            BorderThickness="2"
+                            Margin="5 0 5 5">
+                    <StackPanel>
+                        <TextBlock Text="{Binding Child.CreatedAt, StringFormat='Created At: {0}'}" Margin="5"
+                                       FontSize="14" FontWeight="SemiBold"
+                                       TextWrapping="Wrap"/>
+
+                        <TextBlock Text="{Binding Child.ModifiedAt, StringFormat='Modified At: {0}'}" Margin="5"
+                                       FontSize="14" FontWeight="SemiBold"
+                                       TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+            </Grid>-->
+
+
+            <Grid Grid.Column="1">
+                <GroupBox Grid.Row="0"
+                            BorderBrush="Black"
+                            BorderThickness="2 2 2 2"
+                            Margin="5 5 5 0"
+                          FontSize="18"
+                          FontWeight="SemiBold"
+                          Header="Reader Adult Infor"
+                          Height="{Binding Path=Height, ElementName=grdContain}">
+                    <StackPanel Margin="5">
+                        <TextBlock Name="tblName"
+                                   Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+                        <TextBlock Name="tblBOF" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+                        <TextBlock Name="tblType" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblCreatedAt" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblModifiedAt" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblStatus" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <GroupBox Grid.Row="0"
+                            BorderBrush="Black"
+                            BorderThickness="2 2 2 2"
+                            Margin="5 5 5 0"
+                          FontSize="18"
+                          FontWeight="SemiBold"
+                          Header="Adult Infor"
+                          Height="{Binding Path=Height, ElementName=grdContain}">
+                    <StackPanel Margin="5">
+                        <TextBlock Name="tblIdentify" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblAddress" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblCity" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblPhone" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblExpDate" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblCreated" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblModifited" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="tblStatusA" Margin="5"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

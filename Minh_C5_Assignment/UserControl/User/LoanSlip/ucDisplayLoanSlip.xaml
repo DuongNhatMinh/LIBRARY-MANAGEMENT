@@ -1,0 +1,223 @@
+﻿<UserControl x:Class="Minh_C5_Assignment.ucDisplayLoanSlip"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Minh_C5_Assignment"
+             mc:Ignorable="d" Background="White">
+    <StackPanel Name="stackpanel">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="170"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="275"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <GroupBox  Grid.Column="0" 
+                           x:Name="grbReader"
+                           Header="Search Reader"
+                           Margin="8,0,10.2,10">
+                    <StackPanel Margin="0,0,0.4,-12.8">
+                        <Label Height="50"
+                               Content="ReaderID:"
+                               HorizontalContentAlignment="Center"
+                               VerticalContentAlignment="Center"
+                               HorizontalAlignment="Left"
+                               BorderBrush="Black"/>
+                        <ComboBox Margin="25,-50,0,0"
+                              Height="25" Width="150"
+                              Name="cbReaderID"
+                              SelectionChanged="cbReaderID_SelectionChanged"></ComboBox>
+
+                        <TextBlock Name="lbname"
+                                   Margin="5"
+                                   Text="Name:"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="lbtype"
+                                   Margin="5"
+                                   Text="Type:"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Name="lbStatus"
+                                   Margin="5"
+                                   Text="Status:"
+                                   FontSize="14" FontWeight="SemiBold"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <DataGrid x:Name="dtgloandetail"
+                          Grid.Column="1"
+                      Height="145"
+                      Margin="10"
+                      VerticalAlignment="Top"
+                      RowHeight = "30" 
+                      ColumnWidth = "70"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                          LoadingRow="dtgloandetail_LoadingRow">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id Loan" 
+                		                Binding="{Binding IdLoan}" 
+                		                Width="50"/>
+                        <DataGridTextColumn Header="Book" 
+                		                Binding="{Binding Name}" 
+                		                Width="220"/>
+                        <DataGridTextColumn Header="LoanDate" 
+                		                Binding="{Binding LoanDate, StringFormat={}{0:dd.MM.yyyy}}" 
+                                        Width="100"/>
+                        <DataGridTextColumn Header="ExpDate" 
+                		                Binding="{Binding ExpDate, StringFormat={}{0:dd.MM.yyyy}}"
+                                            Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+        
+        <GroupBox x:Name="grbBooks" Header="Search Books"
+                  Height="350">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" 
+                            Name="stackpanelSearch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label 
+                           Grid.Column="0"
+                           HorizontalAlignment="Left">Categories:</Label>
+                    <ComboBox Width="120"
+                              Grid.Column="1"
+                              SelectionChanged="cbcategory_SelectionChanged"
+                              Name="cbcategory"></ComboBox>
+                    <Label 
+                           Grid.Column="2"
+                           HorizontalAlignment="Left"
+                           >Name Book:</Label>
+                    <TextBox Width="120"
+                             Grid.Column="3"                            
+                             TextChanged="txtBook_TextChanged"
+                             Name="txtBook"></TextBox>
+                    <Label 
+                           Grid.Column="4"
+                           HorizontalAlignment="Left"
+                           >Author:</Label>
+                    <ComboBox Width="120"
+                              Grid.Column="5"
+                              SelectionChanged="cbAuthor_SelectionChanged"
+                              Name="cbAuthor"></ComboBox>
+
+                    <Button Content="Create" 
+                            Width="100" Height="30"
+                            HorizontalContentAlignment="Center"   
+                            Name="btnOk"
+                            Click="btnOk_Click"
+                            Grid.Column="6"
+                            IsEnabled="False"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="420"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <GroupBox Grid.Column="0" Header="List Book">
+                        <DataGrid x:Name="dtgBook"
+                                      Height="230"
+                                      Margin="10"
+                                      VerticalAlignment="Top"
+                                      RowHeight = "30" 
+                                      ColumnWidth = "70"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Title" 
+                		                Binding="{Binding BookTitleDTO}" 
+                                        Width="90"/>
+                                <DataGridTextColumn Header="Author" 
+                		                Binding="{Binding AuthorDTO}" 
+                                        Width="80"/>
+                                <DataGridTextColumn Header="Language" 
+                		                Binding="{Binding Language}" 
+                                        Width="80"/>
+                                <DataGridTextColumn Header="Quantity" 
+                		                Binding="{Binding Quantity}" 
+                                        Width="60"/>
+                                <DataGridTemplateColumn Header="Select" 
+                                        IsReadOnly="True"
+                                        Width="50">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Select" 
+                                        Name="btnAdd"
+                                        Background="Cyan"
+                                        Click="btnAdd_Click"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+
+                    <GroupBox Grid.Column="1" Header="Book Order">
+                        <DataGrid x:Name="dtgBookOrder"
+                                  Height="230"
+                                  Margin="10"
+                                  VerticalAlignment="Top"
+                                  RowHeight = "30" 
+                                  ColumnWidth = "70"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Title" 
+                		                Binding="{Binding NameDTO}" 
+                                        Width="100"/>
+                                <DataGridTextColumn Header="Author" 
+                		                Binding="{Binding AuthorDTO}" />
+                                <DataGridTextColumn Header="Language" 
+                		                Binding="{Binding LanguageDTO}" 
+                                        Width="50"/>
+                                <DataGridTextColumn Header="Price" 
+                		                Binding="{Binding PriceCurrent}" 
+                                        Width="50"/>
+
+                                <DataGridTemplateColumn Header="Delete" 
+                                        IsReadOnly="True"
+                                        Width="50">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Delete" 
+                                        Name="btnCancel"
+                                        Background="Cyan"
+                                        Click="btnCancel_Click"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                </Grid>
+            </Grid>
+        </GroupBox>
+
+    </StackPanel>
+</UserControl>

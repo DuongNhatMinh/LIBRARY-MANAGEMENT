@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Minh_C5_Assignment.ucAddReader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Minh_C5_Assignment"
+             mc:Ignorable="d" Background="White">
+    <Grid Width="550">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="450"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <Button Width="100" Height="35"
+                    Content="Add Adult"
+                    Name="btnAdult"
+                    Click="btnAdult_Click"
+                    Margin="-120,0,0,0"/>
+
+            <Button Width="100" Height="35"
+                    Content="Add Child"
+                    Name="btnChild"
+                    Click="btnChild_Click"
+                    Margin="140,-35,0,0"/>
+        </StackPanel>
+
+        <Grid Name="grid"
+              Grid.Row="1">
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="Minh_C5_Assignment.ucSearchBook"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Minh_C5_Assignment"
+             mc:Ignorable="d" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity">
+    <UserControl.Resources>
+        <local:StatusToStringConverter x:Key="statusToStringConverter"/>
+    </UserControl.Resources>
+    
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0"
+               Name="lbTrang"
+               FontSize="25"
+               Content="View Book"
+               FontWeight="Bold"
+               Background="DeepSkyBlue"
+               HorizontalContentAlignment="Center" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Search here..."
+                           Margin="5"
+                           Padding="5"
+                           VerticalAlignment="Center"></TextBlock>
+                <TextBox Margin="5" Grid.Column="1"
+                         Padding="5"
+                         VerticalAlignment="Center"
+                         Name="txtSearch"
+                         TextChanged="txtSearch_TextChanged"></TextBox>
+            </Grid>
+
+
+            <Button  Margin="5"
+                     Content="Add New Book"
+                     Padding="5"
+                     Name="btnAdd"
+                     Click="btnAdd_Click"
+                     Grid.Column="2"></Button>
+        </Grid>
+
+
+        <StackPanel Name="stackpanel"
+                    Grid.Row="2">
+            <DataGrid x:Name="dtgBook"
+                      Height="500"
+                      Margin="5"
+                      VerticalAlignment="Top"
+                      RowHeight = "30" 
+                      ColumnWidth = "70"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True" 
+                      ItemsSource="{Binding LstItem}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" 
+                		                Binding="{Binding Id}" 
+                		                Width="50"/>
+                    <DataGridTextColumn Header="ISBN" 
+                		                Binding="{Binding ISBN}" 
+                		                Width="50"/>
+                    <DataGridTextColumn Header="Title" 
+                		                Binding="{Binding NameDTO}" 
+                                        Width="100"/>
+                    <DataGridTextColumn Header="Translator" 
+                		                Binding="{Binding AuthorDTO}" />
+                    <DataGridTextColumn Header="Language" 
+                		                Binding="{Binding LanguageDTO}" 
+                                        Width="80"/>
+                    <DataGridTextColumn Header="Publisher" 
+                		                Binding="{Binding Publisher}" 
+                                        Width="80"/>
+                    <DataGridTextColumn Header="Price" 
+                		                Binding="{Binding Price}" 
+                                        Width="80"/>
+                    <DataGridTextColumn Header="PriceCurrent" 
+                		                Binding="{Binding PriceCurrent}" 
+                                        Width="80"/>
+                    <DataGridTextColumn Header="PublishDate" 
+                		                Binding="{Binding PublishDate}" 
+                                        Width="80"/>
+                    <DataGridTextColumn Header="Created At" 
+                		                Binding="{Binding CreatedAt, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <DataGridTextColumn Header="Modifited At" 
+                		                Binding="{Binding ModifitedAt, StringFormat={}{0:dd/MM/yyyy}}" 
+                                        Width="80"/>
+                    <DataGridTextColumn Header="Status " 
+                		                Binding="{Binding Status, Converter={StaticResource statusToStringConverter}}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <local:Pagination x:Name="pagination"
+                          Margin="5 10"
+                          Height="45"
+                          Grid.Row="3"/>
+
+    </Grid>
+</UserControl>

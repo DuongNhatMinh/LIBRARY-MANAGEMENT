@@ -1,0 +1,173 @@
+﻿<UserControl x:Class="Minh_C5_Assignment.Pagination"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Minh_C5_Assignment"
+             mc:Ignorable="d" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             Background="White">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="Blue"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Name="tbShowing"
+                   VerticalAlignment="Center"
+                   FontWeight="SemiBold">
+                <Run Text="Showing" />
+                <Run Text="{Binding CurrentItems}" />
+                <Run Text="to" />
+                <Run Text="{Binding ToItems}" />
+                <Run Text="of" />
+                <Run Text="{Binding MaxItems}" />
+                <Run Text="entries" />
+        </TextBlock>
+
+        <Grid Margin="5"
+              Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Show"
+                           VerticalAlignment="Center"
+                           Margin="0 5"></TextBlock>
+
+            <ComboBox SelectedIndex="1"
+                          VerticalAlignment="Center"
+                          Margin="5"
+                          Padding="5"
+                          Grid.Column="1"
+                          Name="cbPage">
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>15</ComboBoxItem>
+                <ComboBoxItem>20</ComboBoxItem>
+                <ComboBoxItem>25</ComboBoxItem>
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding ChangedComboBoxCommand}" 
+                                                   CommandParameter="{Binding ElementName=cbPage}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+
+            <TextBlock Text="entries"
+                           Margin="0 5"
+                           VerticalAlignment="Center"
+                           Grid.Column="2"></TextBlock>
+        </Grid>
+
+        <Grid Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Name="btnPrevious"
+                    Padding="10 0"
+                    Width="70"
+                    Content="Previous"
+                    Command="{Binding ChangedPageCommand}"
+                    CommandParameter="{Binding ElementName=btnPrevious}">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource BtnDetailStyle}">
+                        <Setter Property="Margin" Value="2"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsEnabledButtonOne}" Value="False">
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button Grid.Column="1"
+                    Name="btnOne"
+                    Padding="10 0"
+                    Content="{Binding ContentButtonOne}"
+                    Command="{Binding ChangedPageCommand}"
+                    CommandParameter="{Binding ElementName=btnOne}"
+                    Visibility="{Binding VisibilityButtonOne}"
+                    IsEnabled="{Binding IsEnabledButtonOne, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></Button>
+            <Button Grid.Column="2"
+                    Name="btnTwo"
+                    Padding="10 0"
+                    Content="{Binding ContentButtonTwo}"
+                    Command="{Binding ChangedPageCommand}"
+                    CommandParameter="{Binding ElementName=btnTwo}"
+                    Visibility="{Binding VisibilityButtonTwo}"
+                    IsEnabled="{Binding IsEnabledButtonTwo, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></Button>
+            <Button Grid.Column="3"
+                    Name="btnThree"
+                    Padding="10 0"
+                    Content="{Binding ContentButtonThree}"
+                    Command="{Binding ChangedPageCommand}"
+                    CommandParameter="{Binding ElementName=btnThree}"
+                    Visibility="{Binding VisibilityButtonThree}"
+                    IsEnabled="{Binding IsEnabledButtonThree, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></Button>
+            <Button Grid.Column="4"
+                    Name="btnFour"
+                    Padding="10 0"
+                    Content="{Binding ContentButtonFour}"
+                    Command="{Binding ChangedPageCommand}"
+                    CommandParameter="{Binding ElementName=btnFour}"
+                    Visibility="{Binding VisibilityButtonFour}"
+                    IsEnabled="{Binding IsEnabledButtonFour, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></Button>
+            <Button Grid.Column="5"
+                    Name="btnFive"
+                    Padding="10 0"
+                    Content="{Binding ContentButtonFive}"
+                    Command="{Binding ChangedPageCommand}"
+                    CommandParameter="{Binding ElementName=btnFive}"
+                    Visibility="{Binding VisibilityButtonFive}"
+                    IsEnabled="{Binding IsEnabledButtonFive, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></Button>
+
+            <Button Grid.Column="6"
+                    Name="btnNext"
+                    Padding="10 0"
+                    Content="Next"
+                    Width="70"
+                    Command="{Binding ChangedPageCommand}"
+                    CommandParameter="{Binding ElementName=btnNext}"
+                    IsEnabled="{Binding IsEnabledButtonNext}">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource BtnDetailStyle}">
+                        <Setter Property="Margin" Value="2"></Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

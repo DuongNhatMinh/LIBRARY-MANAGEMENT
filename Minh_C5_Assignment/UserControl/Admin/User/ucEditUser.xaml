@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="Minh_C5_Assignment.ucEditUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Minh_C5_Assignment"
+             mc:Ignorable="d" 
+             Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0"
+                        BorderBrush="Black"
+                        BorderThickness="2"
+                        Margin="5 5 5 0"
+                          FontSize="18"
+                          FontWeight="SemiBold"
+                          Header="User Information">
+                    <StackPanel Orientation="Vertical"
+                                Margin="5">
+                        <Label Content="User Name: "
+                               Name="lbUserName"
+                               FontSize="14" FontWeight="SemiBold"
+                               />
+                        <TextBox Name="txtUserName"
+                                 MaxLength="100"
+                                 PreviewTextInput="txtLName_PreviewTextInput" >
+                        </TextBox>
+
+                        <Label Content="Password: "
+                               Name="lbPassword"
+                               FontSize="14" FontWeight="SemiBold"
+                               />
+                        <TextBox Name="txtPassword"
+                                MaxLength="20"
+                                 PreviewTextInput="txtLName_PreviewTextInput"/>
+
+                        <Label Content="Last Name: "
+                               Name="lbLName"
+                               FontSize="14" FontWeight="SemiBold"
+                               />
+                        <TextBox Name="txtLName"
+                                 MaxLength="100"
+                                 PreviewTextInput="txtLName_PreviewTextInput" >
+                        </TextBox>
+
+                        <Label Content="First Name: "
+                               Name="lbFName"
+                               FontSize="14" FontWeight="SemiBold"
+                               />
+                        <TextBox Name="txtFName"
+                                MaxLength="20"
+                                 PreviewTextInput="txtLName_PreviewTextInput"/>
+
+                        <Label Content="Address: "
+                               FontSize="14" FontWeight="SemiBold"
+                               />
+                        <TextBox Name="txtAddress"/>
+
+                        <Label Content="Phone: "
+                               Name="lbPhone"
+                               FontSize="14" FontWeight="SemiBold"
+                               />
+                        <TextBox Name="txtPhone" 
+                                 MaxLength="10"
+                                 PreviewTextInput="txtPhone_PreviewTextInput"/>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+        </Grid>
+
+        <StackPanel HorizontalAlignment="Center" 
+                    Orientation="Horizontal"
+                    Grid.Row="1">
+            <Button Content="Edit" Width="320" Margin="10"
+                    Name="btnEdit"
+                    Style="{StaticResource BtnEditStyle}"
+                    Click="btnEdit_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

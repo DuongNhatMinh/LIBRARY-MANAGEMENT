@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Minh_C5_Assignment.ucAddAuthor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Minh_C5_Assignment"
+             mc:Ignorable="d" 
+              Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0"
+                        BorderBrush="Black"
+                        BorderThickness="2 2 2 2"
+                        Margin="5 5 5 0"
+                          FontSize="18"
+                          Width="320"
+                          FontWeight="SemiBold"
+                          Header="Add Author">
+                    <StackPanel Orientation="Vertical"
+                                Margin="5">
+                        <Label Content="Name: "
+                               Name="lbName"
+                               FontSize="14" FontWeight="SemiBold"
+                               />
+                        <TextBox Name="txtName"
+                                 MaxLength="100" >
+                        </TextBox>
+
+                        <Label Content="Desciption: "
+                               FontSize="14" FontWeight="SemiBold"
+                               />
+                        <TextBox Name="txtDesciption"
+                                 TextWrapping="Wrap" >
+                        </TextBox>
+
+                        <Label Content="BoF: "
+                               Name="lbbof"
+                               FontSize="14" FontWeight="SemiBold"
+                               />
+                        <DatePicker Name="dpBoF"
+                                    SelectedDateChanged="dpBoF_SelectedDateChanged"
+                                    FontSize="14"/>
+
+                        <Label Content="Summary: "
+                               FontSize="14" FontWeight="SemiBold"
+                               />
+                        <TextBox Name="txtSummary"
+                                 TextWrapping="Wrap" >
+                        </TextBox>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+
+        </Grid>
+
+        <StackPanel HorizontalAlignment="Center" 
+                    Orientation="Horizontal"
+                    Grid.Row="1">
+            <Button Content="Add" Width="320" Margin="10"
+                    Name="btnAdd"
+                    Click="btnAdd_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

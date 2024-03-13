@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Minh_C5_Assignment.ucAddBookISBN"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Minh_C5_Assignment"
+             mc:Ignorable="d" 
+             Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0"
+                        BorderBrush="Black"
+                        BorderThickness="2 2 2 2"
+                        Margin="5 5 5 0"
+                          FontSize="18"
+                          FontWeight="SemiBold"
+                          Header="BookISBN Information">
+                    <StackPanel Orientation="Vertical" 
+                                Margin="5">
+                        <Label Content="BookTitle: "
+                               FontSize="14" FontWeight="SemiBold" />
+                        <ComboBox Name="cbBookTitle" />
+
+                        <Label Content="Author: "
+                               FontSize="14" FontWeight="SemiBold" />
+                        <ComboBox Name="cbAuthor" />
+
+                        <Label Content="Language: "
+                               FontSize="14" FontWeight="SemiBold" />
+                        <ComboBox Name="cbLanguage"/>
+
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+        </Grid>
+
+        <StackPanel HorizontalAlignment="Center" 
+                    Orientation="Horizontal"
+                    Grid.Row="1">
+            <Button Content="Add" Width="250" Margin="10"
+                    Name="btnAdd"
+                    Click="btnAdd_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
